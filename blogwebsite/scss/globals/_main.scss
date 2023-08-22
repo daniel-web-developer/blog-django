@@ -1,0 +1,55 @@
+@use 'typography' as *;
+
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--bg);
+}
+
+main{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.flex{
+    display: flex;
+
+    &-justcont-c{
+        justify-content: center;
+    }
+
+    &-justcont-sb{
+        justify-content: space-between;
+    }
+
+    &-alignit-c{
+        align-items: center;
+    }
+
+    &-dir-col{
+        flex-direction: column;
+    }
+
+    &-dir-col-rev{
+        flex-direction: column-reverse;
+    }
+}
+
+.padding{
+    &-normal{
+        padding-left: 256px;
+        padding-right: 256px;
+    }
+}
+

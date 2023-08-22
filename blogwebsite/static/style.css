@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+body {
+  font-family: "Roboto Mono", monospace;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--bg);
+}
+
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.flex {
+  display: flex;
+}
+.flex-justcont-c {
+  justify-content: center;
+}
+.flex-justcont-sb {
+  justify-content: space-between;
+}
+.flex-alignit-c {
+  align-items: center;
+}
+.flex-dir-col {
+  flex-direction: column;
+}
+.flex-dir-col-rev {
+  flex-direction: column-reverse;
+}
+
+.padding-normal {
+  padding-left: 256px;
+  padding-right: 256px;
+}
+
+:root {
+  --bg: hsla(0, 0%, 94%, 1);
+  --text: hsla(0, 0%, 19%, 1);
+}
+
+header {
+  height: 80px;
+}
+header .middle {
+  margin: 0 64px 0 64px;
+}
+header .active {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+header a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+header a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,26 @@
+header{
+    height: 80px;
+
+    .middle{
+        margin: 0 64px 0 64px;
+    }
+
+    .active{
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    a{
+        text-decoration: none;
+        cursor: pointer;
+
+        transition: all 150ms ease-in-out;
+        
+        &:hover{
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
+
+}
+
