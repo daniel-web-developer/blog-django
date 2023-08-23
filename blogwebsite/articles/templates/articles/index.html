@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+{% block body %}
+<div class='flex flex-dir-col flex-alignit-c'>
+    <header class='flex flex-justcont-c flex-alignit-c'>
+        <a href='{% url 'index' %}'>HOME</a>
+        <a href='{% url 'all' %}'  class='middle active'>ARTICLES</a>
+        <a href='{% url 'index' %}#about'>ABOUT ME</a>
+    </header>
+</div>
+{% endblock %}
+
