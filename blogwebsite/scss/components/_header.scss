@@ -7,11 +7,6 @@ header{
         margin: 0 64px 0 64px;
     }
 
-    .active{
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-
     a{
         text-decoration: none;
         cursor: pointer;
@@ -25,8 +20,14 @@ header{
     }
 }
 
-@media screen and (min-width: 640px) and (max-width: 1023px){
+@media screen and (max-width: 1023px){
     header{
         width: 620px;
+    }
+}
+
+@media screen and (max-width: 639px){
+    header{
+        width: 320px;
     }
 }

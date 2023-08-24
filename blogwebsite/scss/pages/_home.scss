@@ -1,29 +1,73 @@
-.more{
-    border: 1px solid var(--text);
-    padding: 2px 10px;
-    margin-bottom: 48px;
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
+@use '../globals/typography' as *;
 
-    transition: all 150ms ease-in-out;
+.all{
+    &-main{
+        font-size: 48px;
+        padding-top: 50px;
+        padding-bottom: 32px;
+    }
 
-    &:hover{
-        color: var(--bg);
-        background: var(--text);
+    &-article{
+        align-items: start;
+    }
+
+    &-title{
+        font-size: 32px;
+    }
+
+    &-body{
+        text-align: justify;
+        padding-bottom: 24px;
+    }
+}
+
+.search{
+    padding-bottom: 16px;
+
+    &-bar{
+        height: 32px;
+        width: 624px;
+        padding-left: 20px;
+        padding-right: 56px;
+        border: 1px solid var(--text);
+        
+        &::placeholder{
+            opacity: 1;
+            color: var(--text);
+            font-family: $font;
+        }
+
+        &:focus{
+            outline: none;
+        }
+
+        &-svg{
+            position: relative;
+            left: -36px;
+        }
+    }
+
+    select{
+        height: 32px;
+        width: 280px;
+
+        color: var(--text);
+        font-family: $font;
+        
+        border: 1px solid var(--text);
+        border-radius: 0;
+        background-color: #FFF;
+        padding-left: 20px;
     }
 }
 
 .texts{
-    width: 928px;
     justify-content: space-between;
 }
 
 .about{
-    width: 454px;
-
     &-title{
-        font-size: 32px;
+        font-size: 48px;
         padding-bottom: 16px;
     }
 
@@ -33,13 +77,16 @@
 }
 
 .social{
-    width: 454px;
-
-    align-items: end;
+    &-title{
+        font-size: 32px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
 
     &-links{
         flex-grow: 1;
-        align-items: end;
+
+        margin-top: 32px;
     }
 
     &-link{
@@ -51,7 +98,7 @@
         border: 1px solid transparent;
         
         p{
-            padding-right: 8px;
+            padding-left: 8px;
         }
 
         img{
@@ -67,9 +114,7 @@
 }
 
 .images{
-    width: 928px;
     padding-top: 32px;
-    padding-bottom: 40px;
 }
 
 .featured{
@@ -88,13 +133,8 @@
     }
 }
 
-@media screen and (min-width: 640px) and (max-width: 1023px){
-    .images{
-        width: 620px;
-    }
-
+@media screen and (max-width: 1023px){
     .texts{
-        width: 620px;
         flex-direction: column;
     }
 
@@ -119,23 +159,20 @@
         }
     }
 
-    .about{
-        width: 620px;
+    .search{
+        &-bar{
+            width: 320px;
+        }
+        
+        select{
+            width: 230px;
+        }
     }
 
     .social{
-        width: 620px;
-        padding-top: 32px;
-
-        align-items: start;
-
         &-links{
-            align-items: start;
-            width: 620px;
-
             a{
                 padding: 10px 10px 10px 0;
-                margin-bottom: 16px;
 
                 &:last-child{
                     margin-bottom: 0;
@@ -151,8 +188,42 @@
 
 @media screen and (max-width: 639px){
     .featured{
+        &-first{
+            margin: 0;
+        }
+
         &-others{
             display: none;
+        }
+    }
+
+    .all{
+        &-main{
+            font-size: 40px;
+        }
+
+        &-title{
+            font-size: 28px;
+        }
+    }
+
+    .about{
+        &-title{
+            font-size: 40px;
+        }
+    }
+
+    .search{
+        flex-direction: column;
+
+        &-bar{
+            margin-bottom: 8px;
+        }
+    }
+
+    .social{
+        &-links{
+            flex-wrap: wrap;
         }
     }
 }
