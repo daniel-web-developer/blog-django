@@ -149,6 +149,7 @@ main {
 .social-links {
   flex-grow: 1;
   margin-top: 32px;
+  margin-bottom: 32px;
 }
 .social-link {
   align-items: center;
@@ -247,6 +248,20 @@ main {
     flex-wrap: wrap;
   }
 }
+.article {
+  align-self: start;
+}
+.article-title {
+  font-size: 48px;
+}
+.article-author {
+  font-size: 24px;
+  text-decoration: none;
+}
+.article-body {
+  text-align: justify;
+}
+
 header {
   height: 80px;
   width: 928px;

@@ -1,0 +1,18 @@
+.article{
+    align-self: start;
+
+    &-title{
+        font-size: 48px;
+    }
+
+    &-author{
+        font-size: 24px;
+        text-decoration: none;
+    }
+
+    &-body{
+        text-align: justify;
+    }
+}
+
+
