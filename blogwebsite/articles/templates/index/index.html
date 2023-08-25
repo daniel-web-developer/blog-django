@@ -19,20 +19,14 @@
             <div class="flex flex-alignit-c">
                 <input id="search" type="search" placeholder="Search for articles" class="search-bar"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="search-bar-svg">{/* Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. */}<path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
             </div>
-            <select>
+            <select id="select">
                 <option value="1">Sort by: last to first</option>
                 <option value="2">Sort by: first to last</option>
                 <option value="3">Sort by: A to Z</option>
                 <option value="4">Sort by: Z to A</option>
             </select>
         </div>
-        <div class="flex flex-dir-col all-article">
-            {% for article in articles %}
-            <div>
-                <a href="{% url 'article' article.permalink %}" class="all-title">{{ article.title }}</a>
-                <p class="all-body">{{ article.content|truncatewords:10 }}</p>
-            </div>
-            {% endfor %}
+        <div id="articles" class="flex flex-dir-col all-article">
             <!-- <div>
                 <p class="all-title">Article 1</p>
                 <p class="all-body">1 In principio erat Verbum, et Verbum erat apud Deum, et Deus erat Verbum. 2 Hoc erat in principio apud Deum. 3 Omnia per ipsum facta sunt : et sine ipso factum est nihil, quod factum est. 4 In ipso vita erat, et vita erat lux hominum : 5 et lux in tenebris lucet, et tenebrae eam non comprehenderunt.</p>

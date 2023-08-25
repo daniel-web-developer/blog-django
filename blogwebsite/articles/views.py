@@ -1,11 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
+# from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import Article
 from .forms import newArticleForm
 from django.utils import timezone
 from django.views.generic.edit import UpdateView
 import secrets
+from rest_framework.decorators import api_view
+from .serializers import ArticleSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
 def index(request):
@@ -25,7 +29,7 @@ def new_article(request):
                 article.date_edited = None
                 article.permalink = secrets.token_urlsafe(10)[:10]
                 article.save()
-                return render(request, 'index/index.html')
+                return redirect('index')
         else:
             form = newArticleForm()
             return render(request, 'articles/new.html', {
@@ -62,3 +66,18 @@ def article(request, urlstr):
         "article": onearticle
     })
 
+@api_view(['GET'])
+def article_list(request, format=None):
+    all = Article.objects.all()
+    serializer = ArticleSerializer(all, many = True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def article_detail(request, urlstr):
+    try:
+        onearticle = Article.objects.get(permalink = urlstr)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    serializer = ArticleSerializer(onearticle)
+    return Response(serializer.data)
