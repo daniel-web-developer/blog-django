@@ -1,12 +1,43 @@
 const articles = document.querySelector('#articles');
 const search = document.querySelector('#search');
 const select = document.querySelector('#select');
+const onearticle = document.querySelector('#one-article');
 
-const urlAll = 'http://localhost:8000/api/articles/?format=json';
+const urlAll = '/api/articles/?format=json';
 
 let apiData = null;
 let searchValue = "";
 let renderArticles = null;
+let slug = window.location.pathname.split('/').slice(-1);
+
+const urlOne = `http://localhost:8000/api/articles/${slug}?format=json`;
+
+function fetchOne(url){
+    console.log(url);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            renderOne(data);
+        });
+}
+
+function renderOne(data){
+    renderArticles = ( 
+        `
+        <p class="article-title">${data.title}</p>
+        <a href="/#about" class="article-author">${data.author}</a>
+        <p class="article-body">${data.content}</p>
+        `
+    );
+    onearticle.innerHTML = renderArticles;
+}
+
+if (slug != ""){
+    fetchOne(urlOne);
+}
+else{
+    fetchAll();
+}
 
 function fetchAll(){
     fetch(urlAll)
@@ -55,13 +86,13 @@ function renderData(data){
     renderArticles = data.map((article) => 
         `
         <div>
-        <a href="/article/${article.permalink}" class="all-title">${article.title}</a>
+        <div class="flex flex-alignit-c">
+        <a href="/article/${article.permalink}" class="all-title">${article.title}</a> <p>${article.date_posted}</p>
+        </div>
         <p class="all-body">${article.content}</p>
         </div>
         `
     );
     articles.innerHTML = renderArticles.join('');
 }
-
-fetchAll();
 

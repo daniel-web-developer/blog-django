@@ -6,10 +6,8 @@
         <a href="{% url 'index' %}#all" class='middle'>ARTICLES</a>
         <a href="{% url 'index' %}#about">ABOUT ME</a>
     </header>
-    <div class="flex flex-dir-col article">
-        <p class="article-title">{{ article.title }}</p>
-        <a href="{% url 'index' %}#about" class="article-author">{{ article.author }}</a>
-        <p class="article-body">{{ article.content|safe }}</p>
+    <div id='one-article' class="flex flex-dir-col article">
+        <p>Loading...</p>
     </div>
 </div>
 {% endblock %}
