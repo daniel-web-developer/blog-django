@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Daniel's blog{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}"/>
-<body class="flex flex-justcont-c">
-    {% block body %}
-    {% endblock %}
-    <script src="{% static 'script.js' %}" defer></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Daniel's blog{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}"/>
+        <body class="flex flex-justcont-c">
+            {% block body %}
+            {% endblock %}
+            <script src="{% static 'script.js' %}" defer></script>
+        </body>
 </html>

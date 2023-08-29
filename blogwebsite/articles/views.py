@@ -81,3 +81,4 @@ def article_detail(request, urlstr):
     
     serializer = ArticleSerializer(onearticle)
     return Response(serializer.data)
+

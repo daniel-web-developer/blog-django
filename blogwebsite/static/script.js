@@ -1,40 +1,48 @@
-console.log("VIVA CRISTO REY");
-
-const search = document.querySelector('#search');
-const select = document.querySelector('#select');
 const articles = document.querySelector('#articles');
+const search = document.querySelector('#search');
 
 const urlAll = 'http://localhost:8000/api/articles/?format=json';
-const urlOne = 'http://localhost:8000/api/article/';
 
-function getAll(){
-    const data = fetch(urlAll)
-        .then((response) => response.json())
-        .then((response) => rendering(response));
+let apiData = null;
+let searchValue = "";
+let renderArticles = null;
 
-    console.log(data);
+function fetchAll(){
+    fetch(urlAll)
+        .then(response => response.json())
+        .then(data => {
+            renderData(data);
+        });
 }
 
-function rendering(props){
-    let allArticles = props.map((article) => 
+function renderData(apiData){
+
+    renderArticles = apiData.map((article) => 
         `
         <div>
-            <a href="{% url 'article' article.permalink %}" class="all-title">${article.title}</a>
-            <p class="all-body">${article.content}</p>
+        <a href="{% url 'article' article.permalink %}" class="all-title">${article.title}</a>
+        <p class="all-body">${article.content}</p>
         </div>
         `
     );
+    articles.innerHTML = renderArticles;
 
-    articles.innerHTML = allArticles
-}
+    search.addEventListener("keydown", (event) => {
+        searchValue = event.target.value;
+        searchValue = searchValue.toLowerCase();
+        data = apiData.filter(article => article.title.toLowerCase().includes(searchValue))
+        renderArticles = data.map((article) => 
+            `
+            <div>
+            <a href="{% url 'article' article.permalink %}" class="all-title">${article.title}</a>
+            <p class="all-body">${article.content}</p>
+            </div>
+            `
+        );
+        articles.innerHTML = renderArticles;
+    })
 
-search.addEventListener("keydown", (event) => {
-    console.log(event.target.value);
-    let searchValue = event.target.value;
+    }
 
-    let filteredArticles = data.filter(article => article.title.toLowerCase().includes(searchValue));
+fetchAll();
 
-
-})
-
-getAll()
