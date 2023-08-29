@@ -42,10 +42,10 @@ function sortData(data, value){
         sortedData = data.sort((a, b) => a.date_posted - b.date_posted ? 1 : -1);
     }
     else if (value == 3){
-        sortedData = data.sort((a, b) => a.title - b.title ? -1 : 1);
+        sortedData = data.sort((a, b) => a.title - b.title ? 1 : -1);
     }
     else if (value == 4){
-        sortedData = data.sort((a, b) => a.title - b.title ? 1 : -1);
+        sortedData = data.sort((a, b) => a.title - b.title ? -1 : 1);
     }
 
     renderData(sortedData);
