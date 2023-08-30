@@ -6,9 +6,9 @@ const onearticle = document.querySelector('#one-article');
 const urlAll = '/api/articles/?format=json';
 
 let apiData = null;
-let searchValue = "";
 let renderArticles = null;
 let slug = window.location.pathname.split('/').slice(-1);
+let fetchedData = null;
 
 const urlOne = `http://localhost:8000/api/articles/${slug}?format=json`;
 
@@ -26,8 +26,8 @@ function renderOne(data){
         `
         <p class="article-title">${data.title}</p>
         <div class="flex article-mobile">
-            <p class="article-date">Posted: ${data.date_posted}</p>
-            <p>${data.date_edited == null ? "" : data.date_edited}</p>
+        <p class="article-date">Posted: ${data.date_posted}</p>
+        <p>${data.date_edited == null ? "" : data.date_edited}</p>
         </div>
         <a href="/#about" class="article-author">${data.author}</a>
         <p class="article-body">${data.content}</p>
@@ -38,50 +38,76 @@ function renderOne(data){
 
 if (slug != ""){
     fetchOne(urlOne);
-}
-else{
-    fetchAll();
-}
-
-function fetchAll(){
-    fetch(urlAll)
+} else {
+    apiData = fetch(urlAll)
         .then(response => response.json())
-        .then(data => {
-            organiseData(data);
-        });
+        .then(response => organiseData(response, search.value,select.value))
+        .then(response => fetchedData = response);
 }
 
-function organiseData(apiData){
-
-    let data = apiData;
-
-    search.addEventListener("keyup", (event) => {
-        console.log(select.value);
-        searchValue = event.target.value;
-        searchValue = searchValue.toLowerCase();
-        data = apiData.filter(article => article.title.toLowerCase().includes(searchValue))
-        sortData(data, select.value);
-    })
-    sortData(data, select.value);
-}
-
-function sortData(data, value){
-    console.log(value);
+function organiseData(data, searchValue, selectValue){
+    dataFirst = data.filter(article => article.title.toLowerCase().includes(searchValue));
 
     let sortedData = null;
 
-    if (value == 1){
-        sortedData = data.sort((a, b) => a.date_posted - b.date_posted ? -1 : 1);
+    if (selectValue == 1){
+        sortedData = dataFirst.sort((a, b) => a.date_posted - b.date_posted ? -1 : 1);
     }
-    else if (value == 2){
-        sortedData = data.sort((a, b) => a.date_posted - b.date_posted ? 1 : -1);
+    else if (selectValue == 2){
+        sortedData = dataFirst.sort((a, b) => a.date_posted - b.date_posted ? 1 : -1);
     }
-    else if (value == 3){
-        sortedData = data.sort((a, b) => a.title - b.title ? 1 : -1);
+    else if (selectValue == 3){
+        sortedData = dataFirst.sort((a, b) => a.title.localeCompare(b.title));
     }
-    else if (value == 4){
-        sortedData = data.sort((a, b) => a.title - b.title ? -1 : 1);
+    else if (selectValue == 4){
+        sortedData = dataFirst.sort((a, b) => b.title.localeCompare(a.title));
     }
+
+    search.addEventListener("keyup", (event) => {
+        searchValue = event.target.value.toLowerCase();
+        selectValue = select.value;
+        dataFirst = data.filter(article => article.title.toLowerCase().includes(searchValue));
+
+        let sortedData = null;
+
+        if (selectValue == 1){
+            sortedData = dataFirst.sort((a, b) => a.date_posted - b.date_posted ? -1 : 1);
+        }
+        else if (selectValue == 2){
+            sortedData = dataFirst.sort((a, b) => a.date_posted - b.date_posted ? 1 : -1);
+        }
+        else if (selectValue == 3){
+            sortedData = dataFirst.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        else if (selectValue == 4){
+            sortedData = dataFirst.sort((a, b) => b.title.localeCompare(a.title));
+        }
+        renderData(sortedData);
+    })
+
+    select.addEventListener("input", (event) => {
+        searchValue = search.value.toLowerCase();
+        selectValue = event.target.value;
+        console.log(selectValue);
+
+        dataFirst = data.filter(article => article.title.toLowerCase().includes(searchValue));
+
+        let sortedData = null;
+
+        if (selectValue == 1){
+            sortedData = dataFirst.sort((a, b) => a.date_posted - b.date_posted ? -1 : 1);
+        }
+        else if (selectValue == 2){
+            sortedData = dataFirst.sort((a, b) => a.date_posted - b.date_posted ? 1 : -1);
+        }
+        else if (selectValue == 3){
+            sortedData = dataFirst.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        else if (selectValue == 4){
+            sortedData = dataFirst.sort((a, b) => b.title.localeCompare(a.title));
+        }
+        renderData(sortedData);
+    })
 
     renderData(sortedData);
 }
