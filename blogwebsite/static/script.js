@@ -25,6 +25,10 @@ function renderOne(data){
     renderArticles = ( 
         `
         <p class="article-title">${data.title}</p>
+        <div class="flex article-mobile">
+            <p class="article-date">Posted: ${data.date_posted}</p>
+            <p>${data.date_edited == null ? "" : data.date_edited}</p>
+        </div>
         <a href="/#about" class="article-author">${data.author}</a>
         <p class="article-body">${data.content}</p>
         `
@@ -87,9 +91,9 @@ function renderData(data){
         `
         <div>
         <div class="flex flex-alignit-c">
-        <a href="/article/${article.permalink}" class="all-title">${article.title}</a> <p>${article.date_posted}</p>
+        <a href="/article/${article.permalink}" class="all-title">${article.title}</a> <p class="all-date">Posted: ${article.date_posted}</p>
         </div>
-        <p class="all-body">${article.content}</p>
+        <p class="all-body">${article.content.slice(0, 200)}...</p>
         </div>
         `
     );

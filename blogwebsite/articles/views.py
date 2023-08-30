@@ -39,20 +39,20 @@ def new_article(request):
     else:
         return render(request, 'forbidden/theoden.html')
     
-def edit_article(request, idarticle):
-    articleid = get_object_or_404(Article, pk = idarticle)
+def edit_article(request, urlstr):
+    onearticle = Article.objects.get(permalink = urlstr)
     if request.user.is_superuser:
         if request.method == "POST":
-            form = newArticleForm(request.POST, instance=articleid)
+            form = newArticleForm(request.POST, instance=onearticle)
             if form.is_valid():
                 article = form.save(commit=False)
                 article.date_posted = article.date_posted
                 article.date_edited = timezone.now()
                 article.permalink = article.permalink
                 article.save()
-                return render(request, 'index/index.html')
+                return redirect('index')
         else:
-            form = newArticleForm()
+            form = newArticleForm(initial={"title": onearticle.title, "content": onearticle.content, "author": onearticle.author})
             return render(request, 'articles/new.html', {
                 "form": form
             })

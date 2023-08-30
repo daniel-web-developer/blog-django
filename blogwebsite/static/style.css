@@ -91,6 +91,9 @@ main {
 .all-title {
   font-size: 32px;
 }
+.all-date {
+  padding-left: 16px;
+}
 .all-body {
   text-align: justify;
   padding-bottom: 24px;
@@ -255,13 +258,23 @@ main {
   font-size: 48px;
 }
 .article-author {
+  width: fit-content;
   font-size: 24px;
   text-decoration: none;
 }
+.article-date {
+  padding-right: 16px;
+}
 .article-body {
   text-align: justify;
+  padding-bottom: 32px;
 }
 
+@media screen and (max-width: 375px) {
+  .article-mobile {
+    flex-direction: column;
+  }
+}
 header {
   height: 80px;
   width: 928px;
