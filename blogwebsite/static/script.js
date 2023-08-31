@@ -2,6 +2,7 @@ const articles = document.querySelector('#articles');
 const search = document.querySelector('#search');
 const select = document.querySelector('#select');
 const onearticle = document.querySelector('#one-article');
+const featured = document.querySelector('#featured');
 
 const urlAll = '/api/articles/?format=json';
 
@@ -27,9 +28,11 @@ function renderOne(data){
         <p class="article-title">${data.title}</p>
         <div class="flex article-mobile">
         <p class="article-date">Posted: ${data.date_posted}</p>
-        <p>${data.date_edited == null ? "" : data.date_edited}</p>
+        <p>${data.date_edited == null ? "" : "Edited: " + data.date_edited}</p>
         </div>
-        <a href="/#about" class="article-author">${data.author}</a>
+        <a href="/#about" class="article-author">Author: ${data.author}</a>
+        <img src=${data.imagelink} class="article-image">
+        <p class="article-sub">${data.subtitle}</p>
         <p class="article-body">${data.content}</p>
         `
     );
@@ -41,8 +44,60 @@ if (slug != ""){
 } else {
     apiData = fetch(urlAll)
         .then(response => response.json())
-        .then(response => organiseData(response, search.value,select.value))
-        .then(response => fetchedData = response);
+        .then(response => organiseData(response, search.value,select.value));
+
+    apiData = fetch(urlAll)
+        .then(response => response.json())
+        .then(response => featuredArticles(response));
+}
+
+function featuredArticles(data){
+    let first = 'jIC6UYwwLr';
+    let second = 'jIC6UYwwLr';
+    let third = 'jIC6UYwwLr';
+
+    let firstArticle = data.filter(article => article.permalink.includes(first));
+    let secondArticle = data.filter(article => article.permalink.includes(second));
+    let thirdArticle = data.filter(article => article.permalink.includes(third));
+
+    renderFeatured(firstArticle, secondArticle, thirdArticle);
+}
+
+function renderFeatured(first, second, third){
+    firstArticle = first.map((article) =>
+        `
+        <a href="article/${article.permalink}" class="flex featured featured-first">
+            <img src=${article.imagelink}>
+            <div class="flex featured-first-overlay">
+                <p class="featured-text">${article.title}</p>
+            </div>
+        </a>
+            `
+    )
+    secondArticle = first.map((article) =>
+        `
+        <div class='flex flex-justcont-sb flex-dir-col'>
+            <a href="article/${article.permalink}" class="featured featured-others">
+                <img src=${article.imagelink}>
+            <div class="flex featured-others-overlay">
+                <p class="featured-text">${article.title}</p>
+            </div>
+            </a>
+            `
+    )
+    thirdArticle = first.map((article) =>
+        `
+            <a href="article/${article.permalink}" class="featured featured-others">
+                <img src=${article.imagelink}>
+            <div class="flex featured-others-overlay">
+                <p class="featured-text">${article.title}</p>
+            </div>
+            </a>
+        </div>
+            `
+    )
+    
+    featured.innerHTML = firstArticle + secondArticle + thirdArticle;
 }
 
 function organiseData(data, searchValue, selectValue){

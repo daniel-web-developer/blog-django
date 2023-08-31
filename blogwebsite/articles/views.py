@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-# from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import Article
 from .forms import newArticleForm
@@ -14,9 +13,7 @@ from rest_framework import status
 # Create your views here.
 def index(request):
     all = Article.objects.all()
-    return render(request, 'index/index.html', {
-        "articles": all
-    })
+    return render(request, 'index/index.html')
 
 # @login_required
 def new_article(request):
@@ -52,7 +49,7 @@ def edit_article(request, urlstr):
                 article.save()
                 return redirect('index')
         else:
-            form = newArticleForm(initial={"title": onearticle.title, "content": onearticle.content, "author": onearticle.author})
+            form = newArticleForm(initial={"title": onearticle.title, "subtitle": onearticle.subtitle, "content": onearticle.content, "author": onearticle.author, "imagelink": onearticle.imagelink})
             return render(request, 'articles/new.html', {
                 "form": form
             })

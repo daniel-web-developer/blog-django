@@ -34,7 +34,7 @@
         padding-left: 20px;
         padding-right: 56px;
         border: 1px solid var(--text);
-        
+
         &::placeholder{
             opacity: 1;
             color: var(--text);
@@ -57,7 +57,7 @@
 
         color: var(--text);
         font-family: $font;
-        
+
         border: 1px solid var(--text);
         border-radius: 0;
         background-color: #FFF;
@@ -101,7 +101,7 @@
         text-decoration: none;
 
         border: 1px solid transparent;
-        
+
         p{
             padding-left: 8px;
         }
@@ -120,6 +120,10 @@
 
 .images{
     padding-top: 32px;
+
+    a{
+        text-decoration: none;
+    }
 }
 
 .github{
@@ -130,16 +134,57 @@
 .featured{
     display: block;
 
-    background-color: grey;
+    &-text{
+        color: var(--bg);
+        align-self: end;
+        padding: 16px;
+        font-size: 28px;
+        user-select: none;
+        font-weight: 600;
+    }
 
     &-first{
         height: 500px;
         width: 454px;
+
+        img{
+            height: 500px;
+            width: 454px;
+        }
+
+        &-overlay{
+            position: relative;
+            height: 500px;
+            width: 454px;
+            content: '';
+            top: -101%;
+            background: linear-gradient(0deg, #00000090 30%, #ffffff45 100%);
+            z-index: 1;
+        }
     }
 
     &-others{
         height: 245px;
         width: 451px;
+
+        &-overlay{
+            position: relative;
+            height: 245px;
+            width: 451px;
+            content: '';
+            top: -102%;
+            background: linear-gradient(0deg, #00000090 30%, #ffffff45 100%);
+            z-index: 1;
+        }
+
+        img{
+            height: 245px;
+            width: 451px;
+        }
+    }
+
+    img{
+        object-fit: cover;
     }
 }
 
@@ -150,19 +195,44 @@
 
     .featured{
         display: block;
-    
-        background-color: grey;
-    
+
+        &-text{
+            font-size: 16px;
+            padding: 4px;
+        }
+
         &-first{
             height: 334px;
             width: 303px;
             margin-right: 23px;
+
+            img{
+                height: 334px;
+                width: 303px;
+            }
+
+            &-overlay{
+                position: relative;
+                height: 334px;
+                width: 303px;
+            }
         }
-    
+
         &-others{
             height: 163px;
             width: 301px;
-    
+
+            &-overlay{
+                position: relative;
+                height: 163px;
+                width: 301px;
+            }
+
+            img{
+                height: 163px;
+                width: 301px;
+            }
+
             &-one{
                 margin-bottom: 10px;
             }
@@ -173,7 +243,7 @@
         &-bar{
             width: 320px;
         }
-        
+
         select{
             width: 230px;
         }

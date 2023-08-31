@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap");
 body {
   font-family: "Roboto Mono", monospace;
   font-size: 16px;
@@ -175,6 +175,9 @@ main {
 .images {
   padding-top: 32px;
 }
+.images a {
+  text-decoration: none;
+}
 
 .github {
   height: 40px;
@@ -183,15 +186,51 @@ main {
 
 .featured {
   display: block;
-  background-color: grey;
+}
+.featured-text {
+  color: var(--bg);
+  align-self: end;
+  padding: 16px;
+  font-size: 28px;
+  user-select: none;
+  font-weight: 600;
 }
 .featured-first {
   height: 500px;
   width: 454px;
 }
+.featured-first img {
+  height: 500px;
+  width: 454px;
+}
+.featured-first-overlay {
+  position: relative;
+  height: 500px;
+  width: 454px;
+  content: "";
+  top: -101%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5647058824) 30%, rgba(255, 255, 255, 0.2705882353) 100%);
+  z-index: 1;
+}
 .featured-others {
   height: 245px;
   width: 451px;
+}
+.featured-others-overlay {
+  position: relative;
+  height: 245px;
+  width: 451px;
+  content: "";
+  top: -102%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5647058824) 30%, rgba(255, 255, 255, 0.2705882353) 100%);
+  z-index: 1;
+}
+.featured-others img {
+  height: 245px;
+  width: 451px;
+}
+.featured img {
+  object-fit: cover;
 }
 
 @media screen and (max-width: 1023px) {
@@ -200,14 +239,35 @@ main {
   }
   .featured {
     display: block;
-    background-color: grey;
+  }
+  .featured-text {
+    font-size: 16px;
+    padding: 4px;
   }
   .featured-first {
     height: 334px;
     width: 303px;
     margin-right: 23px;
   }
+  .featured-first img {
+    height: 334px;
+    width: 303px;
+  }
+  .featured-first-overlay {
+    position: relative;
+    height: 334px;
+    width: 303px;
+  }
   .featured-others {
+    height: 163px;
+    width: 301px;
+  }
+  .featured-others-overlay {
+    position: relative;
+    height: 163px;
+    width: 301px;
+  }
+  .featured-others img {
     height: 163px;
     width: 301px;
   }
@@ -261,23 +321,54 @@ main {
 }
 .article-title {
   font-size: 48px;
+  text-align: justify;
+  font-weight: 700;
+}
+.article-sub {
+  font-size: 32px;
+  text-align: justify;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-weight: 500;
 }
 .article-author {
   width: fit-content;
   font-size: 24px;
+  padding: 12px 0 12px 0;
   text-decoration: none;
 }
 .article-date {
   padding-right: 16px;
+}
+.article-image {
+  height: 500px;
+  object-fit: cover;
 }
 .article-body {
   text-align: justify;
   padding-bottom: 32px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 1023px) {
+  .article-title {
+    font-size: 32px;
+  }
+  .article-sub {
+    font-size: 24px;
+    padding: 12px 0 12px 0;
+  }
+  .article-author {
+    font-size: 20px;
+    padding: 4px 0 4px 0;
+  }
   .article-mobile {
     flex-direction: column;
+  }
+  .article-date {
+    padding-right: 0;
+  }
+  .article-image {
+    height: 300px;
   }
 }
 header {

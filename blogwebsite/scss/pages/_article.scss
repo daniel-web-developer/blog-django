@@ -3,16 +3,32 @@
 
     &-title{
         font-size: 48px;
+        text-align: justify;
+        font-weight: 700;
+    }
+
+    &-sub{
+        font-size: 32px;
+        text-align: justify;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-weight: 500;
     }
 
     &-author{
         width: fit-content;
         font-size: 24px;
+        padding: 12px 0 12px 0;
         text-decoration: none;
     }
 
     &-date{
         padding-right: 16px;
+    }
+
+    &-image{
+        height: 500px;
+        object-fit: cover;
     }
 
     &-body{
@@ -21,10 +37,32 @@
     }
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 1023px){
     .article{
+        &-title{
+            font-size: 32px;
+        }
+
+        &-sub{
+            font-size: 24px;
+            padding: 12px 0 12px 0;
+        }
+
+        &-author{
+            font-size: 20px;
+            padding: 4px 0 4px 0;
+        }
+
         &-mobile{
             flex-direction: column;
+        }
+
+        &-date{
+            padding-right: 0;
+        }
+
+        &-image{
+            height: 300px;
         }
     }
 }
