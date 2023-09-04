@@ -10,4 +10,5 @@ class Article(models.Model):
     date_edited = models.DateTimeField(null=True, blank=True)
     permalink = models.CharField(max_length = 10, unique=True)
     imagelink = models.URLField()
+    tags = models.CharField(max_length=128)
 

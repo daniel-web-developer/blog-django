@@ -133,6 +133,7 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-        'DATETIME_FORMAT': '%d of %B, %Y - %X UTC',
+        'DATETIME_FORMAT': '%d of %B, %Y',
+        'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
 }
 

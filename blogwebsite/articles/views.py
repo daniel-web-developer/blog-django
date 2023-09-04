@@ -49,7 +49,7 @@ def edit_article(request, urlstr):
                 article.save()
                 return redirect('index')
         else:
-            form = newArticleForm(initial={"title": onearticle.title, "subtitle": onearticle.subtitle, "content": onearticle.content, "author": onearticle.author, "imagelink": onearticle.imagelink})
+            form = newArticleForm(initial={"title": onearticle.title, "subtitle": onearticle.subtitle, "content": onearticle.content, "author": onearticle.author, "imagelink": onearticle.imagelink, "tags": onearticle.tags})
             return render(request, 'articles/new.html', {
                 "form": form
             })

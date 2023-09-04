@@ -3,6 +3,7 @@ const search = document.querySelector('#search');
 const select = document.querySelector('#select');
 const onearticle = document.querySelector('#one-article');
 const featured = document.querySelector('#featured');
+const meta = document.querySelector('#metadata');
 
 const urlAll = '/api/articles/?format=json';
 
@@ -23,6 +24,13 @@ function fetchOne(url){
 }
 
 function renderOne(data){
+    let metad = (
+        `
+        <title>${data.title}</title>
+        <meta name="description" property="og:description" content="${data.subtitle}">
+        <meta name="keywords" content="${data.tags}">
+        `
+    );
     renderArticles = ( 
         `
         <p class="article-title">${data.title}</p>
@@ -36,6 +44,7 @@ function renderOne(data){
         <p class="article-body">${data.content}</p>
         `
     );
+    metadata.outerHTML = metad;
     onearticle.innerHTML = renderArticles;
 }
 

@@ -342,6 +342,7 @@ main {
 }
 .article-image {
   height: 500px;
+  width: 928px;
   object-fit: cover;
 }
 .article-body {
@@ -369,6 +370,12 @@ main {
   }
   .article-image {
     height: 300px;
+    width: 620px;
+  }
+}
+@media screen and (max-width: 639px) {
+  .article-image {
+    width: 320px;
   }
 }
 header {
