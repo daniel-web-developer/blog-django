@@ -61,9 +61,9 @@ if (slug != ""){
 }
 
 function featuredArticles(data){
-    let first = 'jIC6UYwwLr';
-    let second = 'jIC6UYwwLr';
-    let third = 'jIC6UYwwLr';
+    let first = 'a';
+    let second = 'a';
+    let third = 'a';
 
     let firstArticle = data.filter(article => article.permalink.includes(first));
     let secondArticle = data.filter(article => article.permalink.includes(second));
@@ -179,12 +179,12 @@ function organiseData(data, searchValue, selectValue){
 function renderData(data){
     renderArticles = data.map((article) => 
         `
+        <a href="/article/${article.permalink}" class="all-box">
         <div>
-        <div class="flex flex-alignit-c">
-        <a href="/article/${article.permalink}" class="all-title">${article.title}</a> <p class="all-date">Posted: ${article.date_posted}</p>
+        <p class="all-title">${article.title}</p> <p class="all-date">${article.date_posted}</p>
         </div>
-        <p class="all-body">${article.content.slice(0, 200)}...</p>
-        </div>
+        <p class="all-body">${article.content.slice(0, 256)}...</p>
+        </a>
         `
     );
     articles.innerHTML = renderArticles.join('');

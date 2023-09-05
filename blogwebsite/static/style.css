@@ -86,17 +86,25 @@ main {
   padding-bottom: 32px;
 }
 .all-article {
-  align-items: start;
+  overflow-x: scroll;
 }
 .all-title {
   font-size: 32px;
 }
 .all-date {
-  padding-left: 16px;
+  padding: 4px 0 8px 0;
 }
 .all-body {
   text-align: justify;
   padding-bottom: 24px;
+}
+.all-box {
+  min-height: 320px;
+  min-width: 280px;
+  margin-right: 32px;
+  padding: 0 4px 0 4px;
+  border: 1px solid var(--text);
+  text-decoration: none;
 }
 
 .search {
