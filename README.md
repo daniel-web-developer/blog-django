@@ -79,7 +79,7 @@ example (this is the root folder of your project)
    1. Open `settings.py` (located inside `/example/exampleapp/exampleapp/settings.py`);
    2. Add `import os` at the top of the file.
    3. Edit the following variables: `DEBUG`, `ALLOWED_HOSTS`, and `SECRET_KEY`. To simplify and make things more secure, we'll add variables that depend on `.env` files (defined on the `example/docker-compose.yml`). Edit each accordingly to my example:
-      - `DEBUG = os.getenv('DEBUG_STATUS', False)`
+      - `DEBUG = os.getenv('DEBUG_STATUS', False) == 'True'`
       - `ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(',')`
       - `SECRET_KEY = os.getenv('SECRET_KEY')`
       Docker will look for the value of each of the above inside `.env` files, according to the Compose configuration.
