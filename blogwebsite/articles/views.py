@@ -11,6 +11,13 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Create your views here.
+def generate_link(newObject):
+    while (True):
+        permalink = secrets.token_urlsafe(10)[:10]
+        if newObject.objects.filter(permalink = permalink).count() == 0:
+            break
+    return permalink
+
 def index(request):
     all = Article.objects.all()
     return render(request, 'index/index.html')
@@ -24,7 +31,7 @@ def new_article(request):
                 article = form.save(commit=False)
                 article.date_posted = timezone.now()
                 article.date_edited = None
-                article.permalink = secrets.token_urlsafe(10)[:10]
+                article.permalink = generate_link(Article)
                 article.save()
                 return redirect('index')
         else:
