@@ -117,10 +117,10 @@ example (project's root folder)
 ```
 services:
   web:
-    build: ./blogwebsite
+    build: ./exampleapp
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./blogwebsite/:/usr/src/app
+      - ./exampleapp/:/usr/src/app
     ports:
       - 8000:8000
     env_file:
