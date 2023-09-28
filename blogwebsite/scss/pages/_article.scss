@@ -1,6 +1,8 @@
 .article{
     align-self: start;
 
+    margin-bottom: 32px;
+
     &-title{
         font-size: 48px;
         text-align: justify;
@@ -71,8 +73,11 @@
 
 @media screen and (max-width: 639px){
     .article{
+        &-title{
+        }
+
         &-image{
-            width: 320px;
+            width: 90vw;
         }
     }
 }

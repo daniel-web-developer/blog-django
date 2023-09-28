@@ -81,6 +81,7 @@
 .about{
     &-title{
         font-size: 48px;
+        padding-top: 16px;
         padding-bottom: 16px;
     }
 
@@ -129,6 +130,7 @@
 
 .images{
     padding-top: 32px;
+
 
     a{
         text-decoration: none;
@@ -224,6 +226,7 @@
                 position: relative;
                 height: 334px;
                 width: 303px;
+                top: -102%;
             }
         }
 
@@ -235,6 +238,7 @@
                 position: relative;
                 height: 163px;
                 width: 301px;
+                top: -102%;
             }
 
             img{
@@ -258,6 +262,12 @@
         }
     }
 
+    .all{
+        &-title{
+            font-size: 28px;
+        }
+    }
+
     .social{
         &-links{
             a{
@@ -278,12 +288,25 @@
 @media screen and (max-width: 639px){
     .featured{
         &-first{
+            width: 100%;
             margin: 0;
+
+            &-overlay{
+                width: 100%;
+            }
+
+            img{
+                width: 100%;
+            }
         }
 
         &-others{
             display: none;
         }
+    }
+
+    .images{
+        justify-content: center;
     }
 
     .all{
@@ -306,6 +329,7 @@
         flex-direction: column;
 
         &-bar{
+            width: 100%;
             margin-bottom: 8px;
         }
     }

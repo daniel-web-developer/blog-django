@@ -64,9 +64,19 @@ main{
     width: 928px;
 }
 
+pre{
+    display: contents;
+    width: 100%;
+}
+
 code{
+    display: inline-block;
+    overflow: scroll;
     background: #073642;
     color: #eee8d5;
+    margin-top: 1px;
+    padding: 0 4px 0 4px;
+    border-radius: 4px;
 }
 
 @media screen and (max-width: 1023px){
@@ -77,6 +87,6 @@ code{
 
 @media screen and (max-width: 639px){
     .width{
-        width: 320px;
+        width: 90vw;
     }
 }

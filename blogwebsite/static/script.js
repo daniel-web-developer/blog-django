@@ -61,9 +61,9 @@ if (slug != ""){
 }
 
 function featuredArticles(data){
-    let first = 'a';
-    let second = 'a';
-    let third = 'a';
+    let first = '13KR9UOLqc';
+    let second = 'HPYQbDN8Xj';
+    let third = 'ZoKR4LQ-3O';
 
     let firstArticle = data.filter(article => article.permalink.includes(first));
     let secondArticle = data.filter(article => article.permalink.includes(second));
@@ -82,8 +82,9 @@ function renderFeatured(first, second, third){
             </div>
         </a>
             `
-    )
-    secondArticle = first.map((article) =>
+    );
+
+    secondArticle = second.map((article) =>
         `
         <div class='flex flex-justcont-sb flex-dir-col'>
             <a href="article/${article.permalink}" class="featured featured-others">
@@ -93,8 +94,9 @@ function renderFeatured(first, second, third){
             </div>
             </a>
             `
-    )
-    thirdArticle = first.map((article) =>
+    );
+
+    thirdArticle = third.map((article) =>
         `
             <a href="article/${article.permalink}" class="featured featured-others">
                 <img src=${article.imagelink}>
@@ -104,7 +106,7 @@ function renderFeatured(first, second, third){
             </a>
         </div>
             `
-    )
+    );
     
     featured.innerHTML = firstArticle + secondArticle + thirdArticle;
 }
@@ -183,7 +185,7 @@ function renderData(data){
         <div>
         <p class="all-title">${article.title}</p> <p class="all-date">${article.date_posted}</p>
         </div>
-        <p class="all-body">${article.content.slice(0, 256)}...</p>
+        <p class="all-body">${article.content.slice(0, 64)}...</p>
         </a>
         `
     );
