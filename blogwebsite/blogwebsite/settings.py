@@ -161,3 +161,9 @@ SECURE_HSTS_PRELOAD = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECURE_CONTENT_TYPE_NOSNIFF
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secure-proxy-ssl-header
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-trusted-origins
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
+
