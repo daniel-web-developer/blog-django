@@ -12,7 +12,7 @@ let renderArticles = null;
 let slug = window.location.pathname.split('/').slice(-1);
 let fetchedData = null;
 
-const urlOne = `http://localhost:8000/api/articles/${slug}?format=json`;
+const urlOne = `/api/articles/${slug}?format=json`;
 
 function fetchOne(url){
     console.log(url);
