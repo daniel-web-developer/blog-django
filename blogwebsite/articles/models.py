@@ -11,4 +11,5 @@ class Article(models.Model):
     permalink = models.CharField(max_length = 10, unique=True)
     imagelink = models.URLField()
     tags = models.CharField(max_length=128)
+    featured = models.CharField(null = True, blank = True);
 

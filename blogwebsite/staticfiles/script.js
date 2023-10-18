@@ -12,7 +12,7 @@ let renderArticles = null;
 let slug = window.location.pathname.split('/').slice(-1);
 let fetchedData = null;
 
-const urlOne = `http://localhost:8000/api/articles/${slug}?format=json`;
+const urlOne = `/api/articles/${slug}?format=json`;
 
 function fetchOne(url){
     console.log(url);
@@ -61,13 +61,9 @@ if (slug != ""){
 }
 
 function featuredArticles(data){
-    let first = 'a';
-    let second = 'a';
-    let third = 'a';
-
-    let firstArticle = data.filter(article => article.permalink.includes(first));
-    let secondArticle = data.filter(article => article.permalink.includes(second));
-    let thirdArticle = data.filter(article => article.permalink.includes(third));
+    let firstArticle = data.filter(article => article.featured.includes("first"));
+    let secondArticle = data.filter(article => article.featured.includes("second"));
+    let thirdArticle = data.filter(article => article.featured.includes("third"));
 
     renderFeatured(firstArticle, secondArticle, thirdArticle);
 }
@@ -82,8 +78,9 @@ function renderFeatured(first, second, third){
             </div>
         </a>
             `
-    )
-    secondArticle = first.map((article) =>
+    );
+
+    secondArticle = second.map((article) =>
         `
         <div class='flex flex-justcont-sb flex-dir-col'>
             <a href="article/${article.permalink}" class="featured featured-others">
@@ -93,8 +90,9 @@ function renderFeatured(first, second, third){
             </div>
             </a>
             `
-    )
-    thirdArticle = first.map((article) =>
+    );
+
+    thirdArticle = third.map((article) =>
         `
             <a href="article/${article.permalink}" class="featured featured-others">
                 <img src=${article.imagelink}>
@@ -104,7 +102,7 @@ function renderFeatured(first, second, third){
             </a>
         </div>
             `
-    )
+    );
     
     featured.innerHTML = firstArticle + secondArticle + thirdArticle;
 }
@@ -183,7 +181,7 @@ function renderData(data){
         <div>
         <p class="all-title">${article.title}</p> <p class="all-date">${article.date_posted}</p>
         </div>
-        <p class="all-body">${article.content.slice(0, 256)}...</p>
+        <p class="all-body">${article.content.slice(0, 64)}...</p>
         </a>
         `
     );

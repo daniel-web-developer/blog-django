@@ -141,29 +141,29 @@ REST_FRAMEWORK = {
 # SECURITY
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-CSRF_COOKIE_SECURE
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SESSION_COOKIE_SECURE
-SESSION_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#secure-ssl-redirect
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True
 
 # WARNING! READ https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECURE_HSTS_SECONDS
-SECURE_HSTS_SECONDS = 31536000
+#SECURE_HSTS_SECONDS = 31536000
 
 # WARNING! READ https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECURE_HSTS_INCLUDE_SUBDOMAINS
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECURE_HSTS_PRELOAD
-SECURE_HSTS_PRELOAD = True
+#SECURE_HSTS_PRELOAD = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECURE_CONTENT_TYPE_NOSNIFF
-SECURE_CONTENT_TYPE_NOSNIFF = True
+#SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#secure-proxy-ssl-header
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+#SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-trusted-origins
-CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
+#CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 

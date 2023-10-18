@@ -61,13 +61,9 @@ if (slug != ""){
 }
 
 function featuredArticles(data){
-    let first = '13KR9UOLqc';
-    let second = 'HPYQbDN8Xj';
-    let third = 'ZoKR4LQ-3O';
-
-    let firstArticle = data.filter(article => article.permalink.includes(first));
-    let secondArticle = data.filter(article => article.permalink.includes(second));
-    let thirdArticle = data.filter(article => article.permalink.includes(third));
+    let firstArticle = data.filter(article => article.featured.includes("first"));
+    let secondArticle = data.filter(article => article.featured.includes("second"));
+    let thirdArticle = data.filter(article => article.featured.includes("third"));
 
     renderFeatured(firstArticle, secondArticle, thirdArticle);
 }
