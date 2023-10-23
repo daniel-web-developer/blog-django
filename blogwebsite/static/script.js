@@ -181,7 +181,7 @@ function renderData(data){
         <div>
         <p class="all-title">${article.title}</p> <p class="all-date">${article.date_posted}</p>
         </div>
-        <p class="all-body">${article.content.slice(0, 64)}...</p>
+        <p class="all-body">${article.subtitle}</p>
         </a>
         `
     );
